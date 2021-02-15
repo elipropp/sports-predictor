@@ -1,0 +1,13 @@
+To do / research
+- look into api to get data: https://rapidapi.com/api-sports/api/api-nba
+- figure out how to store data
+- look at resources to understand how to massage data to work with in
+- look at different ways/libraries to ue to train a model (after baseline)
+
+Resources:
+- https://www.youtube.com/c/sentdex/videos
+- https://www.youtube.com/channel/UCiT9RITQ9PW6BhXK0y2jaeg
+- https://www.youtube.com/channel/UC4JX40jDee_tINbkjycV4Sg
+
+Ideas for baseline and model
+- use simple metric like ppg or pythagorean expectation for baseline
