@@ -6,7 +6,6 @@ import pandas as pdF
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
-from games_webscrape import get_months_in_season
 import concurrent.futures
 import time
 from threading import Thread, Event
@@ -57,7 +56,14 @@ def scrape_stat_data(url, daterange):
         zip_list = list(zip(*[teams, pts]))
         zip_list.sort()
         print(date.date())
-        teams_list, pts_list = zip(*zip_list)
+        try:
+            teams_list, pts_list = zip(*zip_list)
+            pts_list = list(np.float_(pts_list))
+        except ValueError as e:
+            print(date)
+            print(f"Pts: {pts}")
+            print(f"teams: {teams}")
+        
         # data_array.append([[date for i in range(30)], list(zip(*[teams, pts]))])
         data_array.append([[date for i in range(30)], teams_list, pts_list])
     return data_array
@@ -123,14 +129,17 @@ def get_team_data(startYear: int, endYear: int, endpoints: List[str]):
     return DF
 
 # %%
-endpoints = ['points-per-game', 'opponent-points-per-game']
-DF = get_team_data(2010, 2020, endpoints)
+endpoints = ['opponent-points-per-game', 'points-per-game']
+DF = get_team_data(2015, 2020, endpoints) # 2015
 DF
-
+# In[]
+DF['opponent-points-per-game'][0]
 # %%
 # yay = pd.date_range('2013-11-30', '2013-12-31')
 # comparison = pd.Timestamp('2013-12-31')
 # if comparison == yay[-1]:
 #     print("we dont like this date")
+
+# %%
 
 # %%

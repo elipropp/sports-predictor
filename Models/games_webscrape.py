@@ -92,8 +92,6 @@ def get_months_in_season(year: int) -> List[str]:
 
 
 # In[79]:
-
-
 class Game:
     def __init__(self, timestamp, homeTeam, awayTeam, didHomeWin):
         self.day = timestamp
@@ -206,5 +204,6 @@ t0 = time.time()
 DF = scrape_game_data(2010, 2020)
 t1 = time.time()
 print(f"this took {round(t1-t0,2)} seconds.")
+
 # %%
 # %%
